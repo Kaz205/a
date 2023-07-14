@@ -209,7 +209,7 @@ static DEFINE_PER_CPU(struct teo_cpu, teo_cpus);
  */
 static void teo_get_util(struct cpuidle_device *dev, struct teo_cpu *cpu_data)
 {
-	cpu_data->utilized = sched_cpu_util(dev->cpu) > cpu_data->util_threshold;
+	cpu_data->utilized = cpu_util_cfs(cpu_rq(dev->cpu)) > cpu_data->util_threshold;
 }
 
 /**
